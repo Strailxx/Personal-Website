@@ -1,0 +1,142 @@
+/* CSS "Resetter" */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+@font-face {
+    font-family: 'montextralight';
+    src: url('./fonts/mont-extralightdemo-webfont.woff2') format('woff2'),
+         url('./fonts/mont-extralightdemo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'montheavy';
+    src: url('./fonts/mont-heavydemo-webfont.woff2') format('woff2'),
+         url('./fonts/mont-heavydemo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+main{
+    font-family: 'montheavy', Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    background-color: #262829;
+}
+
+/* Left Menu */
+#Lmenu {  
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    width: 50vw;
+    position: fixed;
+    left: 0;
+}
+
+.Lmenu-item {
+    color:white;
+    font-size: clamp(3rem,8vw,5rem);
+    display: block;
+    padding: clamp(0.25rem, 0.5vw, 1rem) 0rem;
+    text-decoration: none;
+}
+
+#Lmenu-items {
+    margin-left: clamp(4rem, 10vw, 48rem);
+    position:relative;
+    z-index: 2;
+}
+
+#Lmenu-items:hover > .Lmenu-item {
+    opacity: 0.2;
+    cursor: default;
+}
+
+#Lmenu-items:hover > .Lmenu-item:hover {
+    opacity: 1;
+}
+
+
+/* Right Menu */
+#Rmenu {  
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    width: 50vw;
+    position: fixed;
+    right: 0;
+}
+
+.Rmenu-item {
+    color:white;
+    overflow: hidden;
+    height: 0;
+    transition: height 500ms ease, opacity 1.5s ease;
+    font-size: clamp(3rem,8vw,5rem);
+    opacity: 0;
+}
+
+.Rmenu-item.visible {
+    height: auto;
+    transition: height 500ms ease, opacity 1.5s ease;
+    opacity: 1;
+}
+
+#Rmenu-items {
+    position:relative;
+    z-index: 2;
+}
+
+/* Gradient BG */
+#menu-background-pattern {
+    height: 100vh;
+    width: 100vw;
+
+    background-image: radial-gradient(
+        rgba(255, 255, 255, 0.1) 9%,
+        transparent 9%
+    );
+    background-position: 0% 0%;
+    background-size: 10vmin 10vmin;
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+
+    transition: opacity 800ms ease,
+        background-size 800ms ease,
+        background-position 800ms ease;
+}
+
+#Lmenu-items:hover ~ #menu-background-pattern {
+    background-size:9vmin 9vmin;
+    opacity: 0.5;
+}
+
+#Lmenu[data-active-index="0"] > #menu-background-pattern {
+    background-position: 0% -25%;
+}
+#Lmenu[data-active-index="1"] > #menu-background-pattern {
+    background-position: 0% -50%;
+}
+#Lmenu[data-active-index="2"] > #menu-background-pattern {
+    background-position: 0% -75%;
+}
+#Lmenu[data-active-index="3"] > #menu-background-pattern {
+    background-position: 0% -100%;
+}
