@@ -9,6 +9,8 @@
     background: transparent;
 }
 
+/* --- Fonts --- */
+
 @font-face {
     font-family: 'montextralight';
     src: url('./fonts/mont-extralightdemo-webfont.woff2') format('woff2'),
@@ -27,6 +29,8 @@
 
 }
 
+/* --- MAIN --- */
+
 main{
     font-family: 'montheavy', Arial, sans-serif;
     font-weight: normal;
@@ -37,7 +41,44 @@ body{
     background-color: #262829;
 }
 
-/* Left Menu */
+/* --- Splash Screen --- */
+
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+        rgba(255, 255, 255, 0.1) 9%,
+        transparent 9%
+    );
+    background-position: 0% 0%;
+    background-size: 10vmin 10vmin;
+    background-color: #262829;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: white;
+    font-size: 24px;
+}
+
+#splash-screen {
+    transform: translateY(0)
+}
+
+.splash-screen-hidden {
+    animation: fade-out 1.5s ease forwards;
+}
+
+#typed-text{
+    font-size: 50px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+/* --- Left Menu --- */
+
 #Lmenu {  
     align-items: center;
     display: flex;
@@ -47,6 +88,32 @@ body{
     left: 0;
 }
 
+/* Header */
+.Lmenu-header {
+    padding: 10px;
+}
+
+.Lmenu-header img {
+    width: 35px;
+    height: auto;
+    margin-right: 5px;
+}
+
+.Lmenu-header p {
+    display: inline; 
+    font-size: 18px; 
+    color: white;
+}
+
+.yellow-line {
+    height: 5px;
+    width: 100%;
+    background-color: #FFBF00;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* List Items */
 .Lmenu-item {
     color:white;
     font-size: clamp(3rem,8vw,5rem);
@@ -70,8 +137,25 @@ body{
     opacity: 1;
 }
 
+/* Apply animation to changing text */
+/* 
+I have no idea how this works I'm going to be honest, If I change any of the animations
+it turns really harsh so it lives like this, It works don't touch it :) 
+*/
+.changing-text {
+    height: 0;
+    opacity: 0;
+    transition: opacity 500ms ease, transform 1.5s ease;
+}
 
-/* Right Menu */
+.changing-text.visible{
+    height: auto;
+    transition: height 500ms ease, opacity 1.5s ease;
+    opacity: 1;
+}
+
+/* --- Right Menu --- */
+
 #Rmenu {  
     align-items: center;
     display: flex;
@@ -101,7 +185,8 @@ body{
     z-index: 2;
 }
 
-/* Gradient BG */
+/* --- Moving BG --- */
+
 #menu-background-pattern {
     height: 100vh;
     width: 100vw;
@@ -128,15 +213,41 @@ body{
     opacity: 0.5;
 }
 
+/* Saving state of background */
 #Lmenu[data-active-index="0"] > #menu-background-pattern {
-    background-position: 0% -25%;
+    background-position: 0% -20%;
 }
 #Lmenu[data-active-index="1"] > #menu-background-pattern {
-    background-position: 0% -50%;
+    background-position: 0% -40%;
 }
 #Lmenu[data-active-index="2"] > #menu-background-pattern {
-    background-position: 0% -75%;
+    background-position: 0% -60%;
 }
 #Lmenu[data-active-index="3"] > #menu-background-pattern {
+    background-position: 0% -80%;
+}
+#Lmenu[data-active-index="4"] > #menu-background-pattern {
     background-position: 0% -100%;
+}
+
+/* --- Animations --- */
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        height: 0;
+    }
+    100% {
+        opacity: 1;
+        height: auto;
+    }
 }
