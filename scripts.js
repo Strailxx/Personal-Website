@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 new TypeIt("#typed-text", { 
     speed: 50,
     startDelay: 900,
-}).type("Welcome, Enjoy your stay.", {delay: 50}).go()
+}).type("Welcome, enjoy your stay.", {delay: 50}).go()
 
 // --- Scrolling over left menu and getting the right menu updated ---
 Array.from(document.getElementsByClassName("Lmenu-item"))
